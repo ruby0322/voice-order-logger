@@ -574,9 +574,6 @@ export default function VoiceMenuLoggerPage() {
               ) : (
                 <MicOff className="w-12 h-12" />
               )}
-              <span className="mt-2 text-xs font-medium">
-                按 M {isListening ? "停止" : "開始"}
-              </span>
             </Button>
 
             <div className="text-center">
@@ -591,7 +588,7 @@ export default function VoiceMenuLoggerPage() {
                 </p>
               </div>
               <p className="text-xs text-muted-foreground">
-                點擊或按 M {isListening ? "停止" : "開始"}錄音
+                點擊或按 M {isListening ? "停止" : "開始"}收音
               </p>
             </div>
           </div>
