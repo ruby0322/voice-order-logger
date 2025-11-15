@@ -344,7 +344,7 @@ export default function VoiceMenuLoggerPage() {
         lastRecordedAtRef.current = now;
         const quantityText =
           Number.isFinite(quantity) && quantity > 1 ? ` x${quantity}` : "";
-        setCurrentText(`✓ 已記錄：${item} ${price}${quantityText}`);
+        setCurrentText(`✅ 已記錄 ${item} ${price}${quantityText}`);
         setTimeout(() => {
           setCurrentText("");
         }, 2000);
@@ -564,33 +564,40 @@ export default function VoiceMenuLoggerPage() {
               id="voice-toggle-button"
               size="lg"
               onClick={isListening ? stopListening : startListening}
-              className={`w-32 h-32 rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-lg mb-6 ${
+              className={cn(
+                "w-32 h-32 rounded-full flex flex-col items-center justify-center transition-all duration-300 mb-6 border shadow-[0_3px_10px_rgb(0,0,0,0.2)] active:shadow-[inset_-12px_-8px_40px_#46464620]",
                 isListening
-                  ? "bg-gray-900 hover:bg-gray-800"
-                  : "bg-gray-100 hover:bg-gray-200 text-gray-900"
-              }`}
+                  ? "bg-emerald-500 text-emerald-50 hover:bg-emerald-600 border-emerald-400 dark:border-emerald-500"
+                  : "bg-card text-card-foreground hover:bg-card/80 border-border",
+              )}
             >
               {isListening ? (
                 <Mic className="w-12 h-12" />
               ) : (
                 <MicOff className="w-12 h-12" />
               )}
+              <span className="mt-2 text-xs font-medium">
+                按 M {isListening ? "停止" : "開始"}
+              </span>
             </Button>
 
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <div
-                  className={cn("w-2 h-2 rounded-full", 
-                    isListening ? "bg-green-500 animate-pulse" : "bg-red-500 animate-pulse",
+                  className={cn(
+                    "w-2 h-2 rounded-full",
+                    isListening
+                      ? "bg-emerald-400 dark:bg-emerald-500 animate-pulse"
+                      : "bg-muted-foreground/40",
                   )}
                 />
                 <p className="text-sm font-medium text-foreground">
                   {isListening ? "正在聆聽" : "已停止"}
                 </p>
               </div>
-              <p className="text-xs text-muted-foreground">
+              {/* <p className="text-xs text-muted-foreground">
                 點擊或按 M {isListening ? "停止" : "開始"}收音
-              </p>
+              </p> */}
             </div>
           </div>
 
