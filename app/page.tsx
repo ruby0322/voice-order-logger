@@ -4,6 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { OrdersList, RecognitionStatus } from "@/components/voice";
+import { cn } from "@/lib/utils";
 import { BarChart3, Mic, MicOff } from "lucide-react";
 import Link from "next/link";
 import {
@@ -579,9 +580,9 @@ export default function VoiceMenuLoggerPage() {
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <div
-                  className={`w-2 h-2 rounded-full ${
-                    isListening ? "bg-red-500 animate-pulse" : "bg-muted"
-                  }`}
+                  className={cn("w-2 h-2 rounded-full", 
+                    isListening ? "bg-green-500 animate-pulse" : "bg-red-500 animate-pulse",
+                  )}
                 />
                 <p className="text-sm font-medium text-foreground">
                   {isListening ? "正在聆聽" : "已停止"}
