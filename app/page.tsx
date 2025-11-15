@@ -1,9 +1,9 @@
 "use client";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { OrdersList, RecognitionStatus } from "@/components/voice";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { BarChart3, Mic, MicOff } from "lucide-react";
 import Link from "next/link";
 import {
@@ -526,7 +526,7 @@ export default function VoiceMenuLoggerPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-4xl font-light tracking-tight text-foreground mb-2">
-                Voice Menu Logger
+                語音記帳助理
               </h1>
               <p className="text-muted-foreground text-sm">持續語音辨識 · 自動記錄</p>
             </div>
