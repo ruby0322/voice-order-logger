@@ -44,19 +44,19 @@ export const OrdersList: FC<OrdersListProps> = ({
   if (isLoading) {
     return (
       <section className="space-y-3">
-        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+        <div className="flex items-center justify-between py-2 border-b border-border">
           <div className="space-y-1">
-            <div className="h-4 w-32 bg-gray-200 rounded" />
-            <div className="h-3 w-20 bg-gray-100 rounded" />
+            <div className="h-4 w-32 bg-muted rounded" />
+            <div className="h-3 w-20 bg-muted/50 rounded" />
           </div>
-          <div className="h-4 w-12 bg-gray-200 rounded" />
+          <div className="h-4 w-12 bg-muted rounded" />
         </div>
-        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+        <div className="flex items-center justify-between py-2 border-b border-border">
           <div className="space-y-1">
-            <div className="h-4 w-28 bg-gray-200 rounded" />
-            <div className="h-3 w-16 bg-gray-100 rounded" />
+            <div className="h-4 w-28 bg-muted rounded" />
+            <div className="h-3 w-16 bg-muted/50 rounded" />
           </div>
-          <div className="h-4 w-10 bg-gray-200 rounded" />
+          <div className="h-4 w-10 bg-muted rounded" />
         </div>
       </section>
     );
@@ -65,7 +65,7 @@ export const OrdersList: FC<OrdersListProps> = ({
   return (
     <section className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <h2 className="text-xl font-light text-gray-900">訂單記錄</h2>
+        <h2 className="text-xl font-light text-foreground">訂單記錄</h2>
         <div className="flex flex-wrap gap-2">
           <Button
             type="button"
@@ -90,16 +90,16 @@ export const OrdersList: FC<OrdersListProps> = ({
 
       {orders.length === 0 ? (
         <div className="text-center py-16">
-          <div className="w-16 h-16 bg-gray-50 rounded-full mx-auto mb-4 flex items-center justify-center">
-            <div className="w-8 h-8 border-2 border-dashed border-gray-300 rounded-full" />
+          <div className="w-16 h-16 bg-muted/50 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-dashed border-muted rounded-full" />
           </div>
-          <p className="text-gray-400 text-sm">尚無訂單記錄</p>
+          <p className="text-muted-foreground text-sm">尚無訂單記錄</p>
         </div>
       ) : (
         <>
-          <div className="divide-y divide-gray-100 border-t relative">
+          <div className="divide-y divide-border border-t relative">
             {isRefreshing ? (
-              <div className="pointer-events-none absolute inset-0 bg-white/60 flex items-center justify-center z-10 text-xs text-gray-500">
+              <div className="pointer-events-none absolute inset-0 bg-background/60 flex items-center justify-center z-10 text-xs text-muted-foreground">
                 更新中...
               </div>
             ) : null}
@@ -115,16 +115,16 @@ export const OrdersList: FC<OrdersListProps> = ({
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-medium text-gray-900">
+                      <h3 className="font-medium text-foreground">
                         {order.item}
                       </h3>
                       {quantity > 1 ? (
-                        <span className="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
                           x{quantity}
                         </span>
                       ) : null}
                     </div>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-muted-foreground">
                       {created.toLocaleString("zh-TW", {
                         month: "2-digit",
                         day: "2-digit",
@@ -135,14 +135,14 @@ export const OrdersList: FC<OrdersListProps> = ({
                     </p>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    <p className="text-lg font-light text-gray-900">
+                    <p className="text-lg font-light text-foreground">
                       ${subtotal}
                     </p>
                     <Button
                       type="button"
                       variant="ghost"
                       size="icon"
-                      className="text-gray-400 hover:text-gray-900 transition"
+                      className="text-muted-foreground hover:text-foreground transition"
                       onClick={() => onEdit(order)}
                     >
                       <Pencil className="w-4 h-4" />
@@ -153,7 +153,7 @@ export const OrdersList: FC<OrdersListProps> = ({
               );
             })}
           </div>
-          <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-dashed">
+          <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-dashed">
             <p>
               第 {orders.length === 0 ? 0 : (page - 1) * pageSize + 1} -{" "}
               {(page - 1) * pageSize + orders.length} 筆 · 共 {total} 筆

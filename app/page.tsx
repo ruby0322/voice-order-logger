@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { OrdersList, RecognitionStatus } from "@/components/voice";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { BarChart3, Mic, MicOff } from "lucide-react";
 import Link from "next/link";
 import {
@@ -519,35 +520,38 @@ export default function VoiceMenuLoggerPage() {
   );
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <div className="max-w-5xl mx-auto px-6 py-12">
         <header className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-light tracking-tight text-gray-900 mb-2">
+              <h1 className="text-4xl font-light tracking-tight text-foreground mb-2">
                 Voice Menu Logger
               </h1>
-              <p className="text-gray-500 text-sm">持續語音辨識 · 自動記錄</p>
+              <p className="text-muted-foreground text-sm">持續語音辨識 · 自動記錄</p>
             </div>
-            <Link href="/analysis">
-              <Button variant="outline" className="flex items-center gap-2">
-                <BarChart3 className="w-4 h-4" />
-                查看分析
-              </Button>
-            </Link>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Link href="/analysis">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  查看分析
+                </Button>
+              </Link>
+            </div>
           </div>
         </header>
 
-        <section className="flex items-center justify-between mb-12 pb-6 border-b border-gray-200">
+        <section className="flex items-center justify-between mb-12 pb-6 border-b border-border">
           <div>
-            <p className="text-sm text-gray-500 mb-1">總品項數</p>
-            <p className="text-3xl font-light text-gray-900">
+            <p className="text-sm text-muted-foreground mb-1">總品項數</p>
+            <p className="text-3xl font-light text-foreground">
               {stats.totalItems}
             </p>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-500 mb-1">總金額</p>
-            <p className="text-3xl font-light text-gray-900">
+            <p className="text-sm text-muted-foreground mb-1">總金額</p>
+            <p className="text-3xl font-light text-foreground">
               ${stats.totalAmount}
             </p>
           </div>
@@ -579,14 +583,14 @@ export default function VoiceMenuLoggerPage() {
               <div className="flex items-center justify-center gap-2 mb-2">
                 <div
                   className={`w-2 h-2 rounded-full ${
-                    isListening ? "bg-red-500 animate-pulse" : "bg-gray-300"
+                    isListening ? "bg-red-500 animate-pulse" : "bg-muted"
                   }`}
                 />
-                <p className="text-sm font-medium text-gray-700">
+                <p className="text-sm font-medium text-foreground">
                   {isListening ? "正在聆聽" : "已停止"}
                 </p>
               </div>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 點擊或按 M {isListening ? "停止" : "開始"}錄音
               </p>
             </div>
@@ -617,11 +621,11 @@ export default function VoiceMenuLoggerPage() {
       </div>
       {editingOrder ? (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 space-y-4">
+          <div className="bg-background rounded-xl shadow-2xl w-full max-w-md p-6 space-y-4 border border-border">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-medium text-gray-900">編輯訂單</h3>
-                <p className="text-xs text-gray-400 mt-1">
+                <h3 className="text-lg font-medium text-foreground">編輯訂單</h3>
+                <p className="text-xs text-muted-foreground mt-1">
                   更新餐點名稱、價格或份數
                 </p>
               </div>
@@ -637,7 +641,7 @@ export default function VoiceMenuLoggerPage() {
             </div>
             <form className="space-y-4" onSubmit={handleUpdateOrder}>
               <div className="space-y-1">
-                <label className="text-sm text-gray-600">餐點名稱</label>
+                <label className="text-sm text-muted-foreground">餐點名稱</label>
                 <Input
                   value={editItem}
                   onChange={(event) => setEditItem(event.target.value)}
@@ -645,7 +649,7 @@ export default function VoiceMenuLoggerPage() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-sm text-gray-600">價格</label>
+                <label className="text-sm text-muted-foreground">價格</label>
                 <Input
                   type="number"
                   min={1}
@@ -656,7 +660,7 @@ export default function VoiceMenuLoggerPage() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-sm text-gray-600">份數</label>
+                <label className="text-sm text-muted-foreground">份數</label>
                 <Input
                   type="number"
                   min={1}

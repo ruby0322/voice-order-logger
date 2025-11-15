@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { ArrowLeft, BarChart3, PieChart as PieChartIcon } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -87,26 +88,29 @@ export default function AnalysisPage() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <header className="mb-16">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-4xl font-light tracking-tight text-gray-900 mb-2">
+                <h1 className="text-4xl font-light tracking-tight text-foreground mb-2">
                   分析
                 </h1>
-                <p className="text-gray-500 text-sm">訂單數據分析與統計</p>
+                <p className="text-muted-foreground text-sm">訂單數據分析與統計</p>
               </div>
-              <Link href="/">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <ArrowLeft className="w-4 h-4" />
-                  返回主頁
-                </Button>
-              </Link>
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <Link href="/">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <ArrowLeft className="w-4 h-4" />
+                    返回主頁
+                  </Button>
+                </Link>
+              </div>
             </div>
           </header>
           <div className="flex items-center justify-center py-12">
-            <p className="text-gray-500">載入中...</p>
+            <p className="text-muted-foreground">載入中...</p>
           </div>
         </div>
       </main>
@@ -116,28 +120,31 @@ export default function AnalysisPage() {
   const hasData = revenueSource.length > 0 || itemPopularity.length > 0 || timeSeries.length > 0 || cumulativeRevenue.length > 0;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="mb-16">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-light tracking-tight text-gray-900 mb-2">
+              <h1 className="text-4xl font-light tracking-tight text-foreground mb-2">
                 分析
               </h1>
-              <p className="text-gray-500 text-sm">訂單數據分析與統計</p>
+              <p className="text-muted-foreground text-sm">訂單數據分析與統計</p>
             </div>
-            <Link href="/">
-              <Button variant="outline" className="flex items-center gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                返回主頁
-              </Button>
-            </Link>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Link href="/">
+                <Button variant="outline" className="flex items-center gap-2">
+                  <ArrowLeft className="w-4 h-4" />
+                  返回主頁
+                </Button>
+              </Link>
+            </div>
           </div>
         </header>
 
         {!hasData ? (
           <div className="flex items-center justify-center py-12">
-            <p className="text-gray-500">目前沒有數據可供分析</p>
+            <p className="text-muted-foreground">目前沒有數據可供分析</p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2">
